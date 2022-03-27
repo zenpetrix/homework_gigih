@@ -1,15 +1,17 @@
 import React from 'react'
-import data from '../data_album/single-sample';
+import data from '../data_album/all-sample';
 
 function Track() {
   return (
     <div className="App">
-    <div class="playlist">
-  <img src = {data.album.images[1].url}></img>
-  <h1>{data.name}</h1>
-  <h3>{data.artists[0].name} - {data.album.name}</h3>
-  <button>PLAY</button>
-  </div>
+    {data.map((track, index) => (
+    <div className="playlist">
+    <img src = {track.album.images[1].url}></img>
+    <h1>{track.name}</h1>
+    <h3>{track.artists[0].name} - {track.album.name}</h3>
+    <button className="btn btn-primary">PLAY</button>
+    </div>
+))}
   </div>  
   );
 }

@@ -39,10 +39,10 @@
 }
 
 .playlist{
-  
+  float:inline-end;
   border: 2px solid slateblue;
-  max-width: 500px;
-  margin:auto;
+  max-width: 50x;
+  margin:40px;
   background-color: plum;
   padding: 20px;
   
