@@ -1,7 +1,8 @@
 import React from 'react'
 import data from '../data_album/all-sample';
+import './Track.css';
 
-function Track() {
+function Track({ data }) {
   return (
     <div className="App">
     {data.map((track, index) => (
