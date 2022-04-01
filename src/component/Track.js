@@ -1,20 +1,25 @@
 import React from 'react'
-import data from '../data_album/all-sample';
+import TrackList from './TrackList';
+
 import './Track.css';
 
-function Track({ data }) {
+const Track = ( { data } ) => {
   return (
-    <div className="App">
-    {data.map((track, index) => (
-    <div className="playlist">
-    <img src = {track.album.images[1].url}></img>
-    <h1>{track.name}</h1>
-    <h3>{track.artists[0].name} - {track.album.name}</h3>
-    <button className="btn btn-primary">PLAY</button>
-    </div>
-))}
-  </div>  
-  );
+          <div className="Track">
+            <h1 className="title">Song Playlist</h1>
+            <div className="playlist">
+              {data.map((track, index) => (
+                <TrackList
+                  key={index}
+                  source={track.album.images[0].url}
+                  title={track.name}
+                  artist={track.artists[0].name}
+                  album={track.album.name} 
+                />
+              ))}
+            </div>
+          </div>
+        );
 }
 
 export default Track
