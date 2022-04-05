@@ -25,7 +25,7 @@ function SearchBar() {
     <div>
       <form className="search-form" onSubmit={e => search(e)}>
         <input className="search-input" value={keyword} type="text" onChange={e => setKeyword(e.target.value)}/>
-        <span style={{display: error ? 'block' : 'none'}} className='search-error'>Please fill this out</span>
+        <span style={{display: error ? 'block' : 'none'}} className='search-error'>Fill this out, please</span>
         <button className="search-button" type='submit'>Search</button>
       </form>
     </div>

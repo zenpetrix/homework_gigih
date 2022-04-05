@@ -9,41 +9,46 @@ import { PlaylistProvider, usePlaylistContext } from './component/context/Playli
 import { parseHash } from './utility/helper';
 import { getStorage, setStorage } from './utility/storage';
 import { getProfile, getUserPlaylist } from './utility/api';
+import { useDispatch } from 'react-redux';
+import { tokenAction } from './component/store/token-slice';
 
 function App() {
-  const { setToken, setUser } = useTokenContext()
-  const {setPlaylist} = usePlaylistContext()
+  const { setUser } = useTokenContext()
+  const { setPlaylist } = usePlaylistContext()
+  
+  const dispatch = useDispatch()
 
   const getCurrentUser = useCallback(
     async () => {
-    const { data } = await getProfile()
-    setUser(data)
-  },[setUser])
+      const { data } = await getProfile()
+      setUser(data)
+    }, [setUser])
 
   const getCurrentUserPlaylist = useCallback(
     async () => {
       const { data } = await getUserPlaylist()
       setPlaylist(data.items)
-    },[setPlaylist]
+    }, [setPlaylist]
   )
 
   useEffect(() => {
     const hash = window.location.hash
-    let token = getStorage("token")
+    let storageToken = getStorage("token")
 
-    if (!token && hash) {
-      token = parseHash(hash)
+    if (!storageToken && hash) {
+      storageToken = parseHash(hash)
       window.location.hash = ""
-      setStorage("token", token)
+      setStorage("token", storageToken)
     }
 
-    setToken(token)
+    // setToken(storageToken)
+    dispatch(tokenAction.setToken(storageToken))
 
-    if(token){
+    if (storageToken) {
       getCurrentUser()
       getCurrentUserPlaylist()
     }
-  },[setToken, getCurrentUser, getCurrentUserPlaylist])
+  }, [dispatch, getCurrentUser, getCurrentUserPlaylist])
 
   return (
     <>
@@ -52,6 +57,7 @@ function App() {
     </>
   );
 }
+
 const AppContainer = () => {
   return (
     <TokenProvider>
@@ -63,4 +69,5 @@ const AppContainer = () => {
     </TokenProvider>
   )
 }
+
 export default AppContainer;

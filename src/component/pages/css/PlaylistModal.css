@@ -13,7 +13,7 @@
 .modal-content {
     position: relative;
     display: flex;
-    background: rgb(126, 95, 64);
+    background: #455EB5;
     flex-direction: column;
     width: 40%;
     padding: 1rem 2rem;
@@ -74,3 +74,4 @@
 .playlist-title-error {
     color: #ff4e44;
 }
+
