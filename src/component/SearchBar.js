@@ -34,7 +34,7 @@ function SearchBar({ setIsSearched }) {
       onSubmit={handleSubmit}
     >
       <Form.Group>
-        <Form.Label className="text-white fs-4">Search </Form.Label>
+        <Form.Label className="text-black fs-4">Search </Form.Label>
         <Form.Control
           required
           type="text"
