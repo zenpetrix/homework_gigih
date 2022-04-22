@@ -19,7 +19,7 @@ function MyPlaylist() {
             {user && `${user.display_name}'s Playlist`}
           </h1>
           <Row xs={1} md={2} lg={4} className="g-3">
-          {playlists?.length > 0 ? (
+            {playlists?.length > 0 ? (
               playlists?.map((pl) => (
                 <MyPlaylistCard key-={pl.id} playlist={pl} />
               ))
