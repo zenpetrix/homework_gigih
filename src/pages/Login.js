@@ -10,7 +10,7 @@ function Login() {
       style={{ minHeight: '100vh' }}
     >
       <Button className="btn btn-success btn-lg" onClick={login}>
-       Login 
+        Login
       </Button>
     </Container>
   );
